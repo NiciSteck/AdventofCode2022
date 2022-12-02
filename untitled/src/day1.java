@@ -13,7 +13,6 @@ public class day1 {
         while (s.hasNextLine()) {
             String line = s.nextLine();
             if (line.equals("")) {
-                System.out.println(curr);
                 if (curr > fst) {
                     trd=snd;
                     snd=fst;
@@ -30,9 +29,6 @@ public class day1 {
 
             }
         }
-        System.out.println(fst);
-        System.out.println(snd);
-        System.out.println(trd);
         System.out.println(fst+snd+trd);
     }
 }
