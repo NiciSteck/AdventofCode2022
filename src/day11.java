@@ -25,32 +25,32 @@ public class day11 {
         }
 
         int mult = 1;
-        for (Monkey curr:
-             monkeys) {
+        for (Monkey curr :
+                monkeys) {
             mult *= curr.divisor;
         }
-        for (Monkey curr:
+        for (Monkey curr :
                 monkeys) {
             curr.setGV(mult);
         }
 
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < 10000; i++) {
             for (int j = 0; j < monkeys.size(); j++) {
                 monkeys.get(j).process(monkeys);
             }
         }
-        Monkey first = monkeys.get(0);
-        Monkey second = monkeys.get(monkeys.size() - 1);
+        long first = 0;
+        long second = 0;
         for (Monkey curr : monkeys
         ) {
-            if (curr.inspected > first.inspected) {
+            if (curr.inspected > first) {
                 second = first;
-                first = curr;
-            } else if (curr.inspected > second.inspected) {
-                second = curr;
+                first = curr.inspected;
+            } else if (curr.inspected > second) {
+                second = curr.inspected;
             }
         }
-        System.out.println(first.inspected * second.inspected);
+        System.out.println((first * second));
     }
 }
 
@@ -74,7 +74,7 @@ class Monkey {
     public void process(ArrayList<Monkey> frens) {
         for (int i = 0; i < items.size(); i++) {
             long curr = items.get(i);
-            curr = operate(curr);
+            curr = operate(curr) % gv;
             //curr /= 3;
             if (curr % divisor == 0) {
                 frens.get(iftrue).items.add(curr);
@@ -103,7 +103,7 @@ class Monkey {
         }
     }
 
-    public void setGV(long kgv){
+    public void setGV(long kgv) {
         gv = kgv;
     }
 
