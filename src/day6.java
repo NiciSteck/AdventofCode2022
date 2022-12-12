@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 public class day6 {
     public static void main(String[] args) throws FileNotFoundException {
+        double time = System.currentTimeMillis();
         Scanner s = new Scanner(new File("six"));
         String[] input = s.nextLine().split("");
         LinkedList<String> marker = new LinkedList<>();
@@ -22,6 +23,7 @@ public class day6 {
             marker.removeFirst();
         }
         System.out.println(result);
+        System.out.println(System.currentTimeMillis()-time);
     }
 
     public static boolean containsDuplicates(LinkedList<String> list) {
