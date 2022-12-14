@@ -8,7 +8,6 @@ public class day12 {
         Scanner s = new Scanner(new File("twelve"));
         int noLines = 41;
         ArrayList<int[]> starts = new ArrayList<>();
-
         int[] end = new int[3];
         String fstL = s.nextLine();
         char[][] map = new char[noLines][fstL.length()];
@@ -52,7 +51,7 @@ public class day12 {
         try {
             int curr = map[u][v];
             int prev = currChar + 1;
-            if ((map[u][v] <= currChar + 1) && (map[u][v] >= 'a')) {
+            if ((curr <= currChar + 1) && (curr >= 'a')) {
                 if (!(u == end[0] && v == end[1])) {
                     bfs.add(new int[]{u, v, (level + 1)});
                 } else {
@@ -60,6 +59,7 @@ public class day12 {
                 }
             }
         } catch (ArrayIndexOutOfBoundsException e) {
+            //just ignore the cases where we go out of bounds
         }
     }
 
